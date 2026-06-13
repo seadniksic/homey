@@ -1,9 +1,8 @@
-## homey-perception
+## homey
 
 --- 
 
-Perception software for the small home robot assistant I'm building. Also functions
-as a standalone system with limited software dependencies and a single hardware dependency (Intel Realsense Camera).
+Software and Hardware designs for the small home robot assistant I'm building. 
 
 It streams frames from a realsense camera and performs standard (ImageNet) object detection, displaying the result.
 
