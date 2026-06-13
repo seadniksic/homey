@@ -9,6 +9,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+include(FetchContent)
+
+message("Fetching libtorch...")
+FetchContent_Declare(
+    Torch
+    URL https://download.pytorch.org/libtorch/cu130/libtorch-shared-with-deps-2.12.0%2Bcu130.zip
+    URL_HASH SHA256=a337e59b671d31c10e415e0435e8a4f2ce30ed84e96e47fb8d380c970c45db12  # guarantees reproducibility
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+FetchContent_MakeAvailable(Torch)
+message("${torch_SOURCE_DIR}")
+list(APPEND CMAKE_PREFIX_PATH "${torch_SOURCE_DIR}")
+
 find_package(fastcdr REQUIRED)
 find_package(fastrtps REQUIRED)
 find_package(realsense2 REQUIRED)

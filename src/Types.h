@@ -16,7 +16,7 @@
 namespace homey {
 
 /**
- * @brief   Holds assorted useful threadsafe that can be shared with sub threads
+ * @brief   Holds assorted useful threadsafe information that can be shared with sub threads
  *          providing communication with the main thread.
  */
 struct ApplicationContext {

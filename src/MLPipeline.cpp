@@ -11,9 +11,8 @@
 namespace homey {
 
 MLPipeline::MLPipeline(ApplicationContext& app_ctx)
-: app_ctx_(app_ctx) {
+: app_ctx_(app_ctx), module_(torch::jit::load("")) {
    // nn setup
-   // torch::jit::script::Module module = torch::jit::load("");
    // assert(module != nullptr);
 }
 
@@ -25,6 +24,8 @@ MLPipeline::~MLPipeline() {
 
 void MLPipeline::update(const FrameBundle& frame_bundle) {
    // do update shit
+
+   const torch::Tensor output_frame = module_.predict(frame_bundle.color_frame);
 
 }
 
