@@ -5,11 +5,16 @@
 
 #include "MLPipeline.h"
 
+#include <torch/script.h>
+#include <torch/torch.h>
+
 namespace homey {
 
 MLPipeline::MLPipeline(ApplicationContext& app_ctx)
+// : app_ctx_(app_ctx), module_(torch::jit::load("")) {
 : app_ctx_(app_ctx) {
    // nn setup
+   // assert(module != nullptr);
 }
 
 MLPipeline::~MLPipeline() {
@@ -20,6 +25,8 @@ MLPipeline::~MLPipeline() {
 
 void MLPipeline::update(const FrameBundle& frame_bundle) {
    // do update shit
+
+   // const torch::Tensor output_frame = module_.predict(frame_bundle.color_frame);
 
 }
 

@@ -1,0 +1,26 @@
+{
+  "name": "myproject-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  // GPU access + ROS networking
+  "runArgs": [
+    "--gpus", "all",
+    "--network=host"
+  ],
+  // Mounts your repo into the container; you edit on host, build inside
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "dev",
+  // VS Code extensions auto-installed inside the container
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "ms-iot.vscode-ros"
+      ]
+    }
+  }
+}
